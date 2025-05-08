@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "ghcr.io/sure-b/<your_image_name>"  // Replace with your image name
+        IMAGE_NAME = "ghcr.io/sure-b/nginx-custom"  // Replace with your image name
         GITHUB_CREDENTIALS_ID = "github-Cred"  // This is the ID of the GitHub credentials in Jenkins
     }
 
