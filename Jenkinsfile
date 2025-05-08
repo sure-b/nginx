@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "ghcr.io/sure-b/nginx-custom"  // Replace with your image name
-        GITHUB_CREDENTIALS_ID = "github-Cred"  // This is the ID of the GitHub credentials in Jenkins
+        GITHUB_CREDENTIALS_ID = "71e359b9-3b8d-456d-8a48-26cb44ac2616"  // This is the ID of the GitHub credentials in Jenkins
     }
 
     stages {
