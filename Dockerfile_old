@@ -1,0 +1,21 @@
+FROM nginx:latest
+
+# Set up custom admin user
+ARG ADMIN_USER=vivritiadmin
+ARG ADMIN_PASSWORD=Welc0me@12345
+RUN adduser -D $ADMIN_USER
+RUN echo "$ADMIN_USER:$ADMIN_PASSWORD" | chpasswd
+
+# Copy custom Nginx configuration (if needed)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy website files
+COPY html /var/www/html
+
+# Change ownership of website files
+RUN chown -R www-data:www-data /var/www/html
+
+# Switch to the custom admin user
+USER $ADMIN_USER
+
+EXPOSE 80

@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  nginx-custom:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: nginx_with_admin
+    tty: true
