@@ -18,6 +18,14 @@ RUN useradd -ms /bin/bash vivritiadmin && \
 RUN passwd -l root && \
     usermod -s /usr/sbin/nologin root
 
+# Create writable temp directories
+RUN mkdir -p /home/vivritiadmin/nginx_temp/{client_body,proxy,fastcgi,scgi,uwsgi} \
+ && touch /home/vivritiadmin/nginx_temp/access.log /home/vivritiadmin/nginx_temp/error.log \
+ && chown -R vivritiadmin:vivritiadmin /home/vivritiadmin/nginx_temp
+
+# Copy custom nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf    
+
 # Optional: switch to the admin user by default
 # USER admin
 CMD ["nginx", "-g", "daemon off;"]
